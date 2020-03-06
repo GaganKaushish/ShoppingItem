@@ -1,4 +1,4 @@
-# BuyPillow
+# ShoppingItem
 
 1. Created Maven Project
 2. Added 2 dependencies i.e. Cucumber and Selenium-standalone
