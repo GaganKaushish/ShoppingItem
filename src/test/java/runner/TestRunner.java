@@ -10,9 +10,10 @@ import cucumber.api.junit.Cucumber;
  */
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="Feature",glue={})
+@CucumberOptions(features="Feature",glue={},
+				plugin={"html:target/cucumber-html-report"})
 public class TestRunner {
 	
-	
+
    
 }
