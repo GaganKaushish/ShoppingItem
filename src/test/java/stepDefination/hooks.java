@@ -1,12 +1,12 @@
-package resources;
+package stepDefination;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import cucumber.api.java.Before;
+import cucumber.api.java.*;
+
 
 public class hooks {
 	
@@ -32,6 +32,11 @@ public class hooks {
 		   driver.get("https://demo.midtrans.com/");
 		
 		
+	}
+	
+	@After
+	public void killBrowser(){
+		driver.quit();
 	}
 	
 	public static WebDriver getDriver(){

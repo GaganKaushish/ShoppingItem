@@ -1,12 +1,13 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import resources.hooks;
+import stepDefination.hooks;
 
 public class CardDeatilsPage {
 
@@ -30,11 +31,23 @@ public class CardDeatilsPage {
 	@FindBy(css="button[type='submit']")
 	private WebElement eleOkBtn;
 	
+	@FindBy(css =".text-failed.text-bold")
+	private WebElement eleFailedMessage;
 	
 	
 	public void enterCardNumber(String num){
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(!eleCardNumbr.isDisplayed()){
 		hooks.getWait().until(ExpectedConditions.visibilityOf(eleCardNumbr));
 		hooks.getWait().until(ExpectedConditions.elementToBeClickable(eleCardNumbr));
+		}
+		/* JavascriptExecutor js = (JavascriptExecutor)hooks.getDriver();
+		 js.executeScript("arguments[0].click();", eleCardNumbr);*/
 		eleCardNumbr.click();
 		eleCardNumbr.clear();
 		eleCardNumbr.sendKeys(num);
@@ -61,6 +74,19 @@ public class CardDeatilsPage {
 		elePasswrd.click();
 		elePasswrd.sendKeys("112233");
 		eleOkBtn.click();
+	}
+	
+	public String failedMessage(){
+		
+		hooks.getDriver().switchTo().defaultContent();
+		hooks.getDriver().switchTo().frame("snap-midtrans");
+		
+		
+		if(!eleFailedMessage.isDisplayed())
+			hooks.getWait().until(ExpectedConditions.visibilityOf(eleFailedMessage));
+		
+		
+		return eleFailedMessage.getText();
 	}
 	
 	//Initialize Page Object

@@ -46,17 +46,12 @@ public class TestCaseClass {
 	Assert.assertTrue(baseScreenPageObj.getMessage().contains("Thank you for your purchase."));
 	}
 	
-	/*
-	 private void setDriverPath() {
-	        if (PlatformUtil.isMac()) {
-	            System.setProperty("webdriver.chrome.driver", "chromedriver");
-	        }
-	        if (PlatformUtil.isWindows()) {
-	            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-	        }
-	        if (PlatformUtil.isLinux()) {
-	            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-	        }
-	    }
-*/
+	@SuppressWarnings("deprecation")
+	@Then("^User should not be able to purchase pillow$")
+	public void user_should_not_be_able_to_purchase_pillow() throws Throwable {
+	 
+		Assert.assertEquals("Transaction failed",cardDetailsObj.failedMessage(),cardDetailsObj.failedMessage());
+		
+	}
+	
 }

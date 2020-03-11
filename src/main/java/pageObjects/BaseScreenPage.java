@@ -4,7 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import resources.hooks;
+import stepDefination.hooks;
 
 public class BaseScreenPage {
 	
